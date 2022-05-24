@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/highlight.min.js"></script>
+    <script src="main.js"></script>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="index.css">
-    <script src="main.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"1>
@@ -19,10 +22,19 @@
                 <label for="scode">Source Code:</label><br>
                 <textarea  type="text" id="scode" name="scode"></textarea><br>
                 <input type="submit" value="Submit"><br>
-              </form>
+            </form>
+            <pre> <!--class="c" missing manual choice-->
+                <code>
+#include &lt;stdio.h&gt;
+int main() {
+    printf("Hello, World!");
+    return 0;
+}
+                </code>
+            </pre>
         </div>
         <footer>
-            <p><a href="">Code</a> • Powered by <a href="">highlight.js</a></p>
+            <p><a href="">Github project</a> • Powered by <a href="">highlight.js</a></p>
         </footer>
     </div>
 </body>
