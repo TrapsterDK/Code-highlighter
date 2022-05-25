@@ -10,6 +10,22 @@ function highlight(code, language) {
 	}
 }
 
+//https://tutorialmeta.com/question/copy-rich-text-to-clipboard-with-styles-from-css-classes
+
+//https://jsfiddle.net/jdhenckel/km7prgv4/3/
+//https://stackoverflow.com/questions/23934656/how-can-i-copy-rich-text-contents-to-the-clipboard-with-javascript
+function copyToClip(str) {
+    console.log(document.getElementById('code').style);
+    function listener(e) {
+      e.clipboardData.setData("text/html", str);
+      e.clipboardData.setData("text/plain", str);
+      e.preventDefault();
+    }
+    document.addEventListener("copy", listener);
+    document.execCommand("copy");
+    document.removeEventListener("copy", listener);
+  };
+
 function highlight_code(input = null){
     if(input == null) input = $('#scode').val()
     let language = $('#language-selector').val()
