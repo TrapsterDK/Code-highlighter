@@ -333,7 +333,7 @@
                 <input type="number" id="start-line" name="start-line" value="1">
                 <input type="submit" value="Highligt" onclick="return highlight_code()">
                 <pre class="language-python"><code id="code"></code></pre>
-                <button onclick="copyToClip(document.getElementById('code').innerHTML)">Copy text</button>
+                <button id="copy" data-clipboard-target="#code">Copy text</button>
 
             </p>
         </div>
