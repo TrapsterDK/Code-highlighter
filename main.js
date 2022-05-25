@@ -8,8 +8,12 @@
 
 //https://cdn.jsdelivr.net/npm/prismjs@1.28.0/components/
 
+//supported languages
+//https://codepen.io/suin/full/XWmYZXz
+
 //https://github.com/PrismJS/prism/issues/1881
 function highlight(code, language) {
+    
 	if (Prism.languages[language]) {
 		return Prism.highlight(code, Prism.languages[language], language);
 	} else {
@@ -19,9 +23,13 @@ function highlight(code, language) {
 
 function highlight_code(input = null){
     if(input == null) input = $('#scode').val()
-    let highlight = Prism.highlight(input, Prism.languages.javascript, 'javascript')
-    console.log(Prism.plugins.autoloader.languages_path)
-    $('code').html(highlight)
+    let language = $('#language-selector').val()
+    let success = ""
+    let error = ""
+    Prism.plugins.autoloader.loadLanguages(language, success, error)
+
+    let highlighted_code = highlight(input, language)
+    $('code').html(highlighted_code)
     return false;
 }
 
