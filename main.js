@@ -1,6 +1,47 @@
+//https://www.digitalocean.com/community/tutorials/js-clipboardjs
+//https://stackoverflow.com/questions/37381640/tooltips-highlight-animation-with-clipboard-js-click
+//clipboard
 (function(){
-    new Clipboard('#copy');
-})();
+    $( document ).ready(function() {
+        $('.copy').tooltip({
+            trigger: 'click',
+            placement: 'bottom'
+        });
+
+        function setTooltip(btn, message) {
+            $(btn).tooltip('hide')
+              .attr('data-original-title', message)
+              .tooltip('show');
+          }
+          
+          function hideTooltip(btn) {
+            setTimeout(function() {
+              $(btn).tooltip('hide');
+            }, 1000);
+          }
+
+        var clipboard = new ClipboardJS('#copy');
+
+        clipboard.on('success', function(e) {
+            setTooltip(e.trigger, 'Copied!');
+            hideTooltip(e.trigger);
+        });
+
+        clipboard.on('error', function(e) {
+            setTooltip(e.trigger, 'Failed!');
+            hideTooltip(e.trigger);
+        });
+
+        /*
+        clipboard.on('success', function(e) {
+            e.clearSelection();
+            console.log(e.trigger)
+            setTooltip(e.trigger, 'Copied!')
+            hideTooltip(e.trigger)
+            $('#copy').tooltip('show')
+        })*/
+    })
+})()
 
 //supported languages
 //https://codepen.io/suin/full/XWmYZXz
@@ -34,7 +75,7 @@ function highlight_code(input = null){
     ()=>{
         $('code').html('<p class="error">An error occured while loading language<p>')
     })
-
+    
     return false;
 }
 
