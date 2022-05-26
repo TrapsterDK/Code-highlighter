@@ -25,7 +25,8 @@ label {
 }
 
 textarea[type=text] {
-    overflow-wrap: break-word;
+    /*white-space: wrap;*/
+    white-space: nowrap;
     width: 100%;
     height: 200px;
 }

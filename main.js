@@ -1,3 +1,15 @@
+//https://prismjs.com/
+
+//https://prismjs.com/components.js
+
+//3rd party themes
+//https://github.com/PrismJS/prism-themes
+//https://cdnjs.com/libraries/prism-themes/1.9.0
+
+//supported languages
+//https://codepen.io/suin/full/XWmYZXz
+
+
 //https://www.digitalocean.com/community/tutorials/js-clipboardjs
 //https://stackoverflow.com/questions/37381640/tooltips-highlight-animation-with-clipboard-js-click
 //copy to clipboard
@@ -35,8 +47,24 @@
     })
 })()
 
-//supported languages
-//https://codepen.io/suin/full/XWmYZXz
+//https://github.com/koca/vue-prism-editor/issues/19
+var themes = 
+{
+    "native":{
+        "path":                 "https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/themes/{id}.min.css",
+		"prism":                "Default",
+		"prism-dark":           "Dark",
+		"prism-funky":          "Funky",
+		"prism-okaidia":        "Okaidia",
+		"prism-twilight":       "Twilight",
+		"prism-coy":            "Coy",
+		"prism-solarizedlight": "Solarized Light",
+		"prism-tomorrow":       "Tomorrow Night"
+    },
+    "prism-themes":{
+
+	}
+}
 
 //https://github.com/PrismJS/prism/issues/1881
 //highlighting function that checks if grammar exists and encodes it based on that
@@ -72,7 +100,7 @@ function highlight_code(input = null){
                 let padded_line = line_number.toString().padStart(pad_start, leading)
                 return `${padded_line} ${line}`
             })
-            
+
             highlighted_input = highlighted_lines_with_numbers.join('\n')
         }
 
