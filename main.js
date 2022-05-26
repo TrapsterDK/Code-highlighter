@@ -3,7 +3,7 @@
 //clipboard
 (function(){
     $( document ).ready(function() {
-        $('.copy').tooltip({
+        $('#copy').tooltip({
             trigger: 'click',
             placement: 'bottom'
         });
@@ -23,6 +23,7 @@
         var clipboard = new ClipboardJS('#copy');
 
         clipboard.on('success', function(e) {
+            e.clearSelection();
             setTooltip(e.trigger, 'Copied!');
             hideTooltip(e.trigger);
         });
