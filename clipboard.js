@@ -31,5 +31,6 @@
         clipboard.on('error', function(e) {tooltip(e, error_message, 2500)});
     }
 
+    //export function
     window.create_tooltip = create_tooltip
 })()

@@ -51,20 +51,22 @@ code > span {
     height: 100%;
 }
 
-#copy {
+#options-code {
     position:absolute;
-    padding: 0.3em 0.4em 0.3em 0.4em;
-    top:0.5em;
-    right:0.5em;
-    width: auto;
-    height: auto;
-    display: flex;
+    top:2px;
+    right:2px;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
+    display: flex;
+    align-items: stretch;
 }
 
-.language- {
-    display: flex-root; 
-    clear: both;
+
+#theme-selector, #copy{
+    border: 2px solid black;
+    outline:0px;
+ 
+    padding: 0.3em 0.4em 0.3em 0.4em;
+    border-radius: 5px;
+    margin: 2px;
 }
