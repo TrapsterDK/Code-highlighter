@@ -1,13 +1,7 @@
 //https://prismjs.com/
 
-//https://prismjs.com/components.js
-
-//3rd party themes
-//https://github.com/PrismJS/prism-themes
-//https://cdnjs.com/libraries/prism-themes/1.9.0
-
 //supported languages
-//https://codepen.io/suin/full/XWmYZXz
+//https://prismjs.com/components.js
 
 //https://github.com/PrismJS/prism/issues/1881
 //highlighting function that checks if grammar exists and encodes it based on that
@@ -20,9 +14,7 @@ function highlight(code, language) {
 }
 
 //highligts the code input based on parameters
-function highlight_code(input = null){
-    if(input == null) input = $('#input-code').val()
-
+function highlight_code(input){
     let language = $('#language-selector').val()
 
     // load language even if loaded as it will just return success
@@ -61,8 +53,12 @@ $(document).ready(function() {
     $('#theme-selector').change(function(){
         window.set_theme_from_id(this.value)
     })
-    
 
+    $("#highlight").click(function() {
+        highlight_code($('#input-code').val())
+    });
+
+    window.set_theme_from_id($('#theme-selector').val())
     window.create_tooltip('#copy', "Copied!", "Failed to copy! Your browser might not support this feature")
     highlight_code($('#input-code').attr('placeholder'))
 })

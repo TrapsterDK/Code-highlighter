@@ -61,9 +61,10 @@ code > span {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 15%;
+    border-radius: 5px;
 }
 
 .language- {
+    display: flex-root; 
     clear: both;
 }

@@ -11,7 +11,6 @@
             "prism-funky",
             "prism-okaidia",
             "prism-twilight",
-            "prism-coy",
             "prism-solarizedlight",
             "prism-tomorrow"
         ],
