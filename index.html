@@ -5,7 +5,8 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js" integrity="sha512-RDQSW3KoqJMiX0L/UBgwBmH1EmRYp8LBOiLaA8rBHIy+7OGP/7Gxg8vbt8wG4ZYd29P0Fnoq6+LOytCqx3cyoQ==" crossorigin="anonymous" referrerpolicy="no-referrer" data-manual></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js" data-autoloader-path="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/" integrity="sha512-fTl/qcO1VgvKtOMApX2PdZzkziyr2stM65GYPLGuYMnuMm1z2JLJG6XVU7C/mR+E7xBUqCivykuhlzfqxXBXbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" id="theme"/>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -31,7 +32,7 @@
         </header>
         <div class="content">
             <p>The highlighter supports highlighting for 292 different languages.</p>
-            <p>Known failures for highlighting <a href="https://prismjs.com/known-failures.html#themes">prismjs.com, most of these cases are obscure.</a></p>
+            <p>Known failures for highlighting <a href="https://prismjs.com/known-failures.html#themes">prismjs.com</a>, most of these cases are obscure.</p>
             <label for="input-code">Source Code:</label><br>
             <textarea  type="text" id="input-code" name="input-code" spellcheck="false" placeholder="print('hello world')"></textarea><br>
             <p>
@@ -332,7 +333,51 @@
                 </select>
                 
                 Style:
-                <select id="language-selector">
+                <select id="theme-selector" onchange="if (this.selectedIndex) change_theme()">
+                    <option value="prism" selected="selected">Default</option>
+                    <option value="a11y-dark">a11y Dark</option>
+                    <option value="base16-ateliersulphurpool.light">Ateliersulphurpool-light</option>
+                    <option value="atom-dark">Atom Dark</option>
+                    <option value="cb">CB</option>
+                    <option value="coldark-cold">Coldark Cold</option>
+                    <option value="coldark-dark">Coldark Dark</option>
+                    <option value="prism-dark">Dark</option>
+                    <option value="prism-coy">Coy</option>
+                    <option value="coy-without-shadows">Coy without shadows</option>
+                    <option value="darcula">Darcula</option>
+                    <option value="dracula">Dracula</option>
+                    <option value="duotone-dark">Duotone Dark</option>
+                    <option value="duotone-earth">Duotone Earth</option>
+                    <option value="duotone-forest">Duotone Forest</option>
+                    <option value="duotone-light">Duotone Light</option>
+                    <option value="duotone-sea">Duotone Sea</option>
+                    <option value="duotone-space">Duotone Space</option>
+                    <option value="prism-funky">Funky</option>
+                    <option value="ghcolors">GHColors</option>
+                    <option value="gruvbox-dark">Gruvbox Dark</option>
+                    <option value="gruvbox-light">Gruvbox Light</option>
+                    <option value="holi-theme">Holi Theme</option>
+                    <option value="hopscotch">Hopscotch</option>
+                    <option value="lucario">Lucario</option>
+                    <option value="material-dark">Material Dark</option>
+                    <option value="material-light">Material Light</option>
+                    <option value="material-oceanic">Material Oceanic</option>
+                    <option value="night-owl">Night Owl</option>
+                    <option value="nord">Nord</option>
+                    <option value="prism-okaidia">Okaidia</option>
+                    <option value="one-dark">One Dark</option>
+                    <option value="one-light">One Light</option>
+                    <option value="pojoaque">Pojoaque</option>
+                    <option value="shades-of-purple">Shades of Purple</option>
+                    <option value="solarized-dark-atom">Solarized Dark Atom</option>
+                    <option value="prism-solarizedlight">Solarized Light</option>
+                    <option value="synthwave84">Synthwave '84</option>
+                    <option value="prism-tomorrow">Tomorrow Night</option>
+                    <option value="prism-twilight">Twilight</option>
+                    <option value="vs">VS</option>
+                    <option value="vsc-dark-plus">VS Code Dark+</option>
+                    <option value="xonokai">Xonokai</option>
+                    <option value="z-touch">Z-Touch</option>
                 </select>
                 
                 Line numbers:
@@ -349,7 +394,7 @@
                 <input type="submit" value="Highligt" onclick="return highlight_code()"/>
                 
                 <div class="code-container">
-                    <pre class="language-python"><code id="code"></code></pre>
+                    <pre class="language-"><code id="code"></code></pre>
                     <button id="copy" data-clipboard-target="#code">
                         <i class="material-icons">content_copy</i> 
                     </button>
