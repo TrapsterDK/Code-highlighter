@@ -9,120 +9,6 @@
 //supported languages
 //https://codepen.io/suin/full/XWmYZXz
 
-
-//https://www.digitalocean.com/community/tutorials/js-clipboardjs
-//https://stackoverflow.com/questions/37381640/tooltips-highlight-animation-with-clipboard-js-click
-//copy to clipboard
-(function(){
-    $( document ).ready(function() {
-        $('#copy').tooltip({
-            trigger: 'click',
-            placement: 'bottom'
-        });
-
-        function setTooltip(btn, message) {
-            $(btn).tooltip('hide')
-              .attr('data-original-title', message)
-              .tooltip('show');
-          }
-          
-          function hideTooltip(btn) {
-            setTimeout(function() {
-              $(btn).tooltip('hide');
-            }, 1000);
-          }
-
-        var clipboard = new ClipboardJS('#copy');
-
-        clipboard.on('success', function(e) {
-            e.clearSelection();
-            setTooltip(e.trigger, 'Copied!');
-            hideTooltip(e.trigger);
-        });
-
-        clipboard.on('error', function(e) {
-            setTooltip(e.trigger, 'Failed!');
-            hideTooltip(e.trigger);
-        });
-    })
-})()
-
-function get_theme_url_from_id(id){
-    for (const [key, value] of Object.entries(themes)) {
-        if(value.includes(id)) return key;
-    }
-    return null
-}
-
-function set_theme_from_id(id) {
-    let link = $('#theme')
-
-    let url = get_theme_url_from_id(id)
-    let theme_url = url.replace(/\{id}/g, id);
-    
-    link.attr('href', theme_url)
-};
-
-//non working current themes are defualt, coy
-function change_theme() {
-    let theme = $('#theme-selector').val()
-
-    set_theme_from_id(theme)
-}
-
-//https://github.com/koca/vue-prism-editor/issues/19
-var themes = 
-{
-    "https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/{id}.min.css":[
-		"prism",
-		"prism-dark",
-		"prism-funky",
-		"prism-okaidia",
-		"prism-twilight",
-		"prism-coy",
-		"prism-solarizedlight",
-		"prism-tomorrow"
-    ],
-    "https://cdnjs.cloudflare.com/ajax/libs/prism-themes/1.9.0/prism-{id}.min.css":[
-        "a11y-dark",
-        "atom-dark",
-        "base16-ateliersulphurpool.light",
-        "cb",
-        "coldark-cold",
-        "coldark-dark",
-        "coy-without-shadows",
-        "darcula",
-        "dracula",
-        "duotone-dark",
-        "duotone-earth",
-        "duotone-forest",
-        "duotone-light",
-        "duotone-sea",
-        "duotone-space",
-        "ghcolors",
-        "gruvbox-dark",
-        "gruvbox-light",
-        "holi-theme",
-        "hopscotch",
-        "lucario",
-        "material-dark",
-        "material-light",
-        "material-oceanic",
-        "night-owl",
-        "nord",
-        "one-dark",
-        "one-light",
-        "pojoaque",
-        "shades-of-purple",
-        "solarized-dark-atom",
-        "synthwave84",
-        "vs",
-        "vsc-dark-plus",
-        "xonokai",
-        "z-touch"
-    ]
-}
-
 //https://github.com/PrismJS/prism/issues/1881
 //highlighting function that checks if grammar exists and encodes it based on that
 function highlight(code, language) {
@@ -171,9 +57,12 @@ function highlight_code(input = null){
     return false;
 }
 
-set_theme_from_id("prism-tomorrow")
+$(document).ready(function() {
+    $('#theme-selector').change(function(){
+        window.set_theme_from_id(this.value)
+    })
+    
 
-//highlights default placeholder text
-window.onload = () => {
+    window.create_tooltip('#copy', "Copied!", "Failed to copy! Your browser might not support this feature")
     highlight_code($('#input-code').attr('placeholder'))
-};
+})
