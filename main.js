@@ -1,8 +1,6 @@
 /*
 TODO FIXES
 fonts copy paste into word determin size, not possible at the moment
-Xonokai break-word
-Line number breaking differently should be the same
 */
 
 //https://prismjs.com/

@@ -36,8 +36,15 @@ pre {
     margin-bottom: 1em;
 }
 
+code > span {
+    z-index: 0 !important;
+}
+
 code {
     word-wrap: break-word !important;
+    word-break: break-all !important;
+    white-space: pre-wrap !important;
+    
 }
 
 .error {
