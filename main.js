@@ -84,6 +84,8 @@ function highlight_code(input){
     return false;
 }
 
+const DEFAULT_START_LINE = 1
+
 $(document).ready(function() {
     $('#theme-selector').change(function(){
         window.set_theme_from_id(this.value)
@@ -97,4 +99,16 @@ $(document).ready(function() {
     window.set_theme_from_id($('#theme-selector').val())
     window.create_tooltip('#copy', "Copied!", "Failed to copy! Your browser might not support this feature")
     highlight_code($('#input-code').attr('placeholder'))
+
+    //handles input to only accept numbers
+    //losses the up and down button for input as it cannot be number
+    $('#start-line').on('input', function() {
+        let parsed_input = $(this).val().replace(/\D/g, '')
+        this.value = parsed_input
+    })
+
+    //set to default if no input
+    $('#start-line').focusout(function() {
+        $(this).val(parseInt($(this).val()) || DEFAULT_START_LINE)
+    })
 })
