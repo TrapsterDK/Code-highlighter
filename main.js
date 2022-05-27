@@ -1,6 +1,15 @@
 /*
 TODO FIXES
 fonts copy paste into word determin size, not possible at the moment
+firefox warning can be fixed by removing bootstrap, as it should be
+
+TODO
+fix layout
+theme for website
+line breaking
+word paste
+remove bootstrap
+check browser support
 */
 
 //https://prismjs.com/
@@ -93,12 +102,7 @@ $(document).ready(function() {
 
     $("#highlight").click(function() {
         highlight_code($('#input-code').val())
-        console.log($('code > span').css('font-size'))
     });
-
-    window.set_theme_from_id($('#theme-selector').val())
-    window.create_tooltip('#copy', "Copied!", "Failed to copy! Your browser might not support this feature")
-    highlight_code($('#input-code').attr('placeholder'))
 
     //handles input to only accept numbers
     //losses the up and down button for input as it cannot be number
@@ -111,4 +115,8 @@ $(document).ready(function() {
     $('#start-line').focusout(function() {
         $(this).val(parseInt($(this).val()) || DEFAULT_START_LINE)
     })
+
+    window.set_theme_from_id($('#theme-selector').val())
+    window.create_tooltip('#copy', "Copied!", "Failed to copy! Your browser might not support this feature")
+    highlight_code($('#input-code').attr('placeholder'))
 })
