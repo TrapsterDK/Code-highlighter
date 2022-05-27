@@ -36,8 +36,8 @@ pre {
     margin-bottom: 1em;
 }
 
-code > span {
-    display: inline;
+code {
+    word-wrap: break-word !important;
 }
 
 .error {
@@ -60,7 +60,6 @@ code > span {
     display: flex;
     align-items: stretch;
 }
-
 
 #theme-selector, #copy{
     border: 2px solid black;
