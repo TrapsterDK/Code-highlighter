@@ -55,6 +55,11 @@ function highlight(code, language) {
 	}
 }
 
+//https://stackoverflow.com/questions/4793604/how-to-insert-an-element-after-another-element-in-javascript-without-using-a-lib
+function insert_node_after(new_node, reference_node) {
+    reference_node.parentNode.insertBefore(new_node, reference_node.nextSibling);
+}
+
 //highligts the code input based on parameters
 function highlight_code(input){
     let language = $('#language-selector').val()
@@ -65,13 +70,47 @@ function highlight_code(input){
         let highlighted_input = highlight(input, language)
 
         let use_line_numbers = $('#line-numbers').prop('checked')
+
         if(use_line_numbers){
             let start_line = parseInt($('#start-line').val())
             let leading = $('input[name="leading-value"]:checked').val()  
 
-            let highlighted_lines = highlighted_input.split('\n');
-            let pad_start = highlighted_lines.length.toString().length;
+            //Fixes multiline string, comments and such before doing add line number
+            var parser = new DOMParser();
+            var temp_doc = parser.parseFromString(highlighted_input, 'text/html');
             
+            // loop through all elements of temp doc
+            for (let i = 0; i < temp_doc.body.children.length; i++) {
+                let element = temp_doc.body.children[i]
+                let lines = element.innerHTML.split('\n')
+
+                //if less than 1 line or 1 line because then there we dont have to unpack html tags
+                if(1 >= lines.length) continue
+                
+                let last_element = element
+                for (line of lines) {
+                    //clone
+                    new_elm = last_element.cloneNode(false)
+                    //set innerHTML to line
+                    new_elm.innerHTML = line
+                    //insert after last element
+                    insert_node_after(new_elm, last_element)
+                    //insert new line
+                    insert_node_after(document.createTextNode('\n'), last_element)
+                    last_element = new_elm
+                }
+
+                //remove \n after orignal element
+                element.nextSibling.remove()
+                // remove original node
+                element.remove()
+            }
+
+            let temp_doc_string = temp_doc.body.innerHTML
+
+            let highlighted_lines = temp_doc_string.split('\n');
+            let pad_start = highlighted_lines.length.toString().length;
+
             let highlighted_lines_with_numbers = highlighted_lines.map((line, i) => {
                 let line_number = start_line + i
                 let padded_line = line_number.toString().padStart(pad_start, leading)
@@ -114,6 +153,7 @@ $(document).ready(function() {
         $(this).val(parseInt($(this).val()) || MIN_START_LINE)
     })
 
+    /*different elements should maybe be split up, not a priority*/
     //saves option for different elements
     $('.save-option').change(function(){
         if(this.type === "checkbox"){
