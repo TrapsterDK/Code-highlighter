@@ -6,7 +6,6 @@
 }
 
 .tooltip .tooltiptext {
-    visibility: hidden;
     width: 120px;
     background-color: #555;
     color: #fff;
@@ -18,8 +17,9 @@
     top: 125%;
     left: 50%;
     margin-left: -60px;
-    opacity: 0;
     transition: opacity 0.3s;
+    visibility: hidden;
+    opacity: 0;
 }
   
 .tooltip .tooltiptext::after {

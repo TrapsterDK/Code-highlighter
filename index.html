@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link id="theme" rel="stylesheet" href="" crossorigin="anonymous" referrerpolicy="no-referrer"/>
     <link rel="stylesheet" href="tooltip.css">
     <link rel="stylesheet" href="index.css">
@@ -53,7 +54,18 @@
                 The highlighter supports 292 different languages, and 44 different themes.
                 List of known failures for highlighting can be found <a href="https://prismjs.com/known-failures.html">here</a>, though most of these cases are obscure.</p>
             <label for="input-code">Source Code:</label><br>
-            <textarea  type="text" id="input-code" name="input-code" spellcheck="false" placeholder="print('hello world')"></textarea><br>
+            
+            <div class="container-for-overlay-container">
+                <textarea  type="text" id="input-code" name="input-code" spellcheck="false" placeholder="print('hello world')"></textarea>
+                <div class="overlay-container">
+                    <button id="upload-file" class="overlay-buttons">
+                        <span class="material-symbols-outlined">
+                            file_upload
+                        </span>
+                    </button>
+                </div>
+            </div>
+            
             Language:
             <select id="language-selector" class="save-option">
                 <option value="abap">ABAP</option>
@@ -362,10 +374,10 @@
 
             <input type="submit" value="Highligt" id="highlight"/>
             
-            <div class="code-container">
+            <div class="container-for-overlay-container">
                 <pre class="language-"><code id="code"></code></pre>
-                <div id="options-code">
-                    <select id="theme-selector" class="save-option">
+                <div class="overlay-container">
+                    <select id="theme-selector" class="save-option overlay-buttons">
                         <option value="prism" selected="selected">Default</option>
                         <option value="a11y-dark">a11y Dark</option>
                         <option value="base16-ateliersulphurpool.light">Ateliersulphurpool-light</option>
@@ -374,7 +386,7 @@
                         <option value="coldark-cold">Coldark Cold</option>
                         <option value="coldark-dark">Coldark Dark</option>
                         <option value="prism-dark">Dark</option>
-                        <option value="scoy-without-shadows">Coy</option>
+                        <option value="coy-without-shadows">Coy</option>
                         <option value="darcula">Darcula</option>
                         <option value="dracula">Dracula</option>
                         <option value="duotone-dark">Duotone Dark</option>
@@ -410,8 +422,10 @@
                         <option value="xonokai">Xonokai</option>
                         <option value="z-touch">Z-Touch</option>
                     </select>
-                    <button id="copy" class="tooltip" data-clipboard-target="#code">
-                        <i class="material-icons">content_copy</i> 
+                    <button id="copy" class="tooltip overlay-buttons" data-clipboard-target="#code">
+                        <span class="material-symbols-outlined">
+                            content_copy
+                        </span>
                     </button>
                 </div>
             </div>
