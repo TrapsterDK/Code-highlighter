@@ -1,14 +1,12 @@
 /*
 TODO FIXES
 fonts copy paste into word determin size, not possible at the moment
-firefox warning can be fixed by removing bootstrap, as it should be
 
 TODO
 fix layout
 theme for website
 line breaking
 word paste
-remove bootstrap
 check browser support
 */
 
@@ -17,7 +15,6 @@ check browser support
 //supported languages
 //https://prismjs.com/components.js
 
-//https://stackoverflow.com/questions/118241/calculate-text-width-with-javascript/5047712#5047712
 /**
   * Uses canvas.measureText to compute and return the width of the given text of given font in pixels.
   * 
@@ -117,6 +114,6 @@ $(document).ready(function() {
     })
 
     window.set_theme_from_id($('#theme-selector').val())
-    window.create_tooltip('#copy', "Copied!", "Failed to copy! Your browser might not support this feature")
+    create_copy_button('#copy')
     highlight_code($('#input-code').attr('placeholder'))
 })
