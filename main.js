@@ -5,9 +5,10 @@ fonts copy paste into word determin size, not possible at the moment
 TODO
 fix layout
 theme for website
-line breaking
+line breaking for formatted code
 word paste
 check browser support
+file drop
 */
 
 //https://prismjs.com/
@@ -90,7 +91,7 @@ function highlight_code(input){
     return false;
 }
 
-const DEFAULT_START_LINE = 1
+const MIN_START_LINE = 1
 
 $(document).ready(function() {
     $('#theme-selector').change(function(){
@@ -110,7 +111,37 @@ $(document).ready(function() {
 
     //set to default if no input
     $('#start-line').focusout(function() {
-        $(this).val(parseInt($(this).val()) || DEFAULT_START_LINE)
+        $(this).val(parseInt($(this).val()) || MIN_START_LINE)
+    })
+
+    //saves option for different elements
+    $('.save-option').change(function(){
+        if(this.type === "checkbox"){
+            var set_val = $(this).prop('checked')
+        }else {
+            set_val = this.value
+        }
+
+        localStorage.setItem(this.id, set_val)
+    })
+
+    //localstorage options
+    $('.save-option').each(function() {
+        let saved_value = localStorage.getItem(this.id)
+        if(saved_value === null) return
+
+        //handles loading values into different elements
+        switch(this.type) {
+            case "checkbox":
+                $(this).prop('checked', JSON.parse(saved_value))
+                break;
+            case "radio":
+                if($(this).val() === saved_value) 
+                    $(this).prop('checked', true)
+                break;
+            default:
+                $(this).val(saved_value)
+        }
     })
 
     window.set_theme_from_id($('#theme-selector').val())
