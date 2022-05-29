@@ -69,8 +69,8 @@ code > span {
 
 .overlay-container {
     position:absolute;
-    top:2px;
-    right: 2px;
+    top: 2px;
+    right: 3px;
     align-items: center;
     justify-content: center;
     display: flex;
@@ -107,6 +107,11 @@ code {
     word-wrap: break-word !important;
     word-break: break-all !important;
     white-space: pre-wrap !important;
+    
+    /*consistenly size to word, 
+    must use a font that word support and a specify font-size */
+    font-family: Verdana,Helvetica,Arial,sans-serif !important;
+    font-size: 13px !important;
 }
 
 pre{

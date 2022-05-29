@@ -1,13 +1,12 @@
 /*
-TODO FIXES
-fonts copy paste into word determin size, not possible at the moment
-
 TODO
 fix layout
 theme for website
 line breaking for formatted code
-word paste
+allow font choice, and font-size
 check browser support
+word paste
+word paste make consistent background, should be a choice
 */
 
 //https://prismjs.com/
