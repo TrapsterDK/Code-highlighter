@@ -12,10 +12,10 @@ function create_copy_button(btn, success_message="Copied!", error_message="Faile
 
     clipboard.on('success', function(e) {
         e.clearSelection();
-        show_tooltip(btn, true, 1000)
+        show_tooltip(btn, true)
     });
 
-    clipboard.on('error', function(e) {
-        show_tooltip(btn, false, 2500)
+    clipboard.on('error', function() {
+        show_tooltip(btn, false, 5000)
     });
 }

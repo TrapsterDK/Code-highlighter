@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 /*https://www.w3schools.com/css/css_tooltip.asp*/
 .tooltip {
     position: relative;
@@ -21,6 +23,20 @@
     visibility: hidden;
     opacity: 0;
 }
+
+/*coherence between different tooltips*/
+.tooltiptext {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 14px !important;
+    font-weight:  normal !important;
+    text-align: center !important;
+    text-indent: 0px !important;
+    text-rendering: auto !important;
+    text-shadow: none !important;
+    word-spacing: 0px !important;
+    color: white !important;
+}
+
   
 .tooltip .tooltiptext::after {
     content: " ";

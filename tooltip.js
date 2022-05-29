@@ -4,7 +4,7 @@ function get_tooltip_type(type){
 }
 
 //show tool tip for x amount of time
-function show_tooltip(btn, type, time_ms){
+function show_tooltip(btn, type, time_ms = 2500){
     let class_type = get_tooltip_type(type)
 
     //show
@@ -24,6 +24,7 @@ function show_tooltip(btn, type, time_ms){
 
 //creates the tooltip element
 function create_tooltip(btn, msg, type){
+    $(btn).addClass("tooltip")
     let class_type = get_tooltip_type(type)
     $(btn).append(`<span class="tooltiptext ${class_type}">${msg}</span>`)
 }

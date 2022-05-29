@@ -57,9 +57,10 @@
             <div class="container-for-overlay-container">
                 <textarea  type="text" id="input-code" name="input-code" spellcheck="false" placeholder="print('hello world')"></textarea>
                 <div class="overlay-container">
-                    <button id="upload-file" class="overlay-buttons">
+                    <input type="file" id="upload-file" accept="text/*" hidden/>
+                    <label id="label-upload-file" for="upload-file" class="overlay-buttons">
                         <i class="material-icons-outlined">file_upload</i>
-                    </button>
+                    </label>
                 </div>
             </div>
             
@@ -419,7 +420,7 @@
                         <option value="xonokai">Xonokai</option>
                         <option value="z-touch">Z-Touch</option>
                     </select>
-                    <button id="copy" class="tooltip overlay-buttons" data-clipboard-target="#code">
+                    <button id="copy" class="overlay-buttons" data-clipboard-target="#code">
                         <i class="material-icons">content_copy</i>
                     </button>
                 </div>

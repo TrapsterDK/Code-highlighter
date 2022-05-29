@@ -78,11 +78,23 @@ code > span {
 }
 
 .overlay-buttons {
+    background-color: rgb(239, 239, 239);
     border: 2px solid black;
     outline:0px;
-    padding: 0.3em 0.4em 0.3em 0.4em;
+    padding: 4px 5px 4px 5px;
     border-radius: 5px;
-    margin: 0.1em;
+    margin: 2px;
+
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+#theme-selector{
+    background-color:white;
 }
 
 .text {
@@ -95,4 +107,8 @@ code {
     word-wrap: break-word !important;
     word-break: break-all !important;
     white-space: pre-wrap !important;
+}
+
+pre{
+    overflow: hidden !important;
 }

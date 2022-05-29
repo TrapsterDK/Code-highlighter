@@ -165,6 +165,31 @@ $(document).ready(function() {
         localStorage.setItem(this.id, set_val)
     })
 
+    //file uploading
+    $('#upload-file').change(function(){
+        var file = this.files[0];
+        
+        if (file) {
+            //read file
+            var reader = new FileReader();
+            reader.readAsText(file, "UTF-8");
+
+            reader.onload = function (e) {
+                //set source code field to file content
+                $('#input-code').val(e.target.result)
+                
+                show_tooltip('#label-upload-file', true)
+
+                //determine language
+                let file_extension = file.name.split(".").pop()
+            }
+
+            reader.onerror = function (e) {
+                show_tooltip('#label-upload-file', false)
+            }
+        }
+    })
+
     //localstorage options
     $('.save-option').each(function() {
         let saved_value = localStorage.getItem(this.id)
@@ -183,6 +208,9 @@ $(document).ready(function() {
                 $(this).val(saved_value)
         }
     })
+
+    create_tooltip('#label-upload-file', 'Successfully uploaded!', true)
+    create_tooltip('#label-upload-file', 'Failed to upload!', false)
 
     window.set_theme_from_id($('#theme-selector').val())
     create_copy_button('#copy')
