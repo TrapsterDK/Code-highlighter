@@ -8,7 +8,6 @@ theme for website
 line breaking for formatted code
 word paste
 check browser support
-file drop
 */
 
 //https://prismjs.com/
@@ -182,6 +181,11 @@ $(document).ready(function() {
 
                 //determine language
                 let file_extension = file.name.split(".").pop()
+                let language = window.get_language_from_extension(file_extension)
+                
+                //set selector
+                if(language !== null) $('#language-selector').val(language)
+
             }
 
             reader.onerror = function (e) {
