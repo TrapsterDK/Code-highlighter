@@ -109,7 +109,9 @@ code {
     white-space: pre-wrap !important;
     
     /*consistenly size to word, 
-    must use a font that word support and a specify font-size */
+    must use a font that word support and a specify font-size 
+    Inconsistency is based on wheather the copied element creates a new line*/
+    display: inline !important;
     font-family: Verdana,Helvetica,Arial,sans-serif !important;
     font-size: 13px !important;
 }
