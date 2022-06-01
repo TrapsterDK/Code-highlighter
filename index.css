@@ -112,7 +112,10 @@ code {
     /*consistenly size to word, 
     must use a font that word support and a specify font-size 
     Inconsistency is based on wheather the copied element creates a new line*/
-    font-family: Verdana,Helvetica,Arial,sans-serif !important;
+    /*font-family: Verdana,Helvetica,Arial,sans-serif !important;*/
+    /*
+    font-family: Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace !important;
+    */
     font-size: 13px !important;
     /*
     Display as inline, to mkae the line copy as a hole line with background, float: none is needed as otherwise it will display as block
