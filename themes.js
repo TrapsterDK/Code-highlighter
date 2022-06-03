@@ -68,7 +68,10 @@
 
         let url = get_theme_url_from_id(id)
         let theme_url = url.replace(/\{id}/g, id);
-        
+
+        //copy and paste of font into word
+        $('code').css({ 'font-family': `${$('pre').css('font-family')} !important` })
+
         link.attr('href', theme_url)
     };
 
