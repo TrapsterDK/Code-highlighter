@@ -70,7 +70,9 @@
         let theme_url = url.replace(/\{id}/g, id);
 
         //copy and paste of font into word
-        $('code').css({ 'font-family': `${$('pre').css('font-family')} !important` })
+        $('code').each(function(){
+            $(this).css({ 'font-family': `${$('pre').css('font-family')} !important` })
+        })
 
         link.attr('href', theme_url)
     };

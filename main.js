@@ -7,6 +7,7 @@ allow font choice, and font-size
 check browser support
 word paste
 word paste make consistent background, should be a choice
+Firefox not copying color, because it is not a style element
 */
 
 //https://prismjs.com/
